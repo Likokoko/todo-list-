@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 150px 0px;
+  padding: 0;
+  background-color: black;
+  color: white;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+.listSection {
+  display: flex;
+  flex-direction: column;
+  margin: 30px;
+}
+
+.todo {
+  display: flex;
+  padding: 0px;
+  list-style: none;
+  flex-wrap: wrap;
+  color: black;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 3px;
+  margin: 5px 0px;
+}
+
+.li {
+  margin: 16px 10px;
+  border-radius: 4px;
+}
+
+.date{
+  margin:16px 4px;
+}
+
+.checkGreen{
+  color:green;
+}
+
+.trashRed{
+  color:orangered;
+}
+
+.textChange {
+  text-decoration: line-through;
+}
+
+button {
+  background-color: white;
+  border-style: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: grey;
+  color: white;
+}

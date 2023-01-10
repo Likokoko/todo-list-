@@ -66,7 +66,9 @@ sort.addEventListener("click", () => {
     let monthNum = todo[i].innerText.split("\n\n")[1].split("-")[1];
     let dateNum = todo[i].innerText.split("\n\n")[1].split("-")[2];
     console.log((inputNum = Number(yearNum + monthNum + dateNum)));
-    //想取得inputNum的值後sort數值大小，為什麼顯示inputArray.push不能用？
-    inputArray = inputArray + inputArray.push(inputNum);
+   inputArray.push(inputNum);
   }
+      
+  console.log(inputArray.sort());
+  //為什麼印出來是12?
 });

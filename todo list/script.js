@@ -7,6 +7,7 @@ const add = document.querySelector(".add");
 
 //condition
 //add eventlistener
+const todoArray = [];
 add.addEventListener("click", () => {
   const d = new Date();
   const getDate = Date.parse(d) - Date.parse(date.value);
@@ -29,6 +30,10 @@ add.addEventListener("click", () => {
     let todoDate = document.createElement("p");
     todoDate.classList.add("date");
     todoDate.innerHTML = date.value;
+    todoArray.push({
+      id: input.value,
+      date: date.value
+    });
 
     let check = document.createElement("button");
     check.classList.add("button");
@@ -59,22 +64,35 @@ let inputNum = 0;
 let inputArray = [];
 
 sort.addEventListener("click", () => {
-  inputArray = [];
+  removeElementsByClass("todo");
+  todoArray.sort(compare);
+  // rebuild todo list
+  for(var i=0; i<todoArray.length; i++) {
+    var str = `
+      <div class="todo">
+        <p class="li">${todoArray[i].id}</p>
+        <p class="date">${todoArray[i].date}</p><button class="button checkGreen"><i class="fa-solid fa-check"></i></button><button
+          class="button trashRed"><i class="fa-solid fa-trash"></i></button>
+      </div>`;
+    document.querySelectorAll(".listSection")[0].innerHTML = document.querySelectorAll(".listSection")[0].innerHTML + str
+  }
+});
 
-  const todo = document.querySelectorAll(".todo");
-  for (let i = 0; i < todo.length; i++) {
-    let yearNum = Number(todo[i].innerText.split("\n\n")[1].split("-")[0]);
-    let monthNum = Number(todo[i].innerText.split("\n\n")[1].split("-")[1]);
-    let dateNum = Number(todo[i].innerText.split("\n\n")[1].split("-")[2]);
+// remove by class name
+function removeElementsByClass(className){
+  const elements = document.getElementsByClassName(className);
+  while(elements.length > 0){
+      elements[0].parentNode.removeChild(elements[0]);
+  }
+}
 
-  
-    let myTodo = {
-      yearNum: yearNum,
-      monthNum: monthNum,
-      dateNum: dateNum,
-    };
-    console.log(myTodo);
-   inputArray.push(myTodo)
- 
-  }})
-
+// sort
+function compare(a, b) {
+  if ( a.date < b.date ){
+    return -1;
+  }
+  if ( a.date > b.date ){
+    return 1;
+  }
+  return 0;
+}

@@ -6,7 +6,6 @@ const sort = document.querySelector(".sort");
 const add = document.querySelector(".add");
 
 //condition
-
 //add eventlistener
 add.addEventListener("click", () => {
   const d = new Date();
@@ -60,15 +59,22 @@ let inputNum = 0;
 let inputArray = [];
 
 sort.addEventListener("click", () => {
+  inputArray = [];
+
   const todo = document.querySelectorAll(".todo");
   for (let i = 0; i < todo.length; i++) {
-    let yearNum = todo[i].innerText.split("\n\n")[1].split("-")[0];
-    let monthNum = todo[i].innerText.split("\n\n")[1].split("-")[1];
-    let dateNum = todo[i].innerText.split("\n\n")[1].split("-")[2];
-    console.log((inputNum = Number(yearNum + monthNum + dateNum)));
-   inputArray.push(inputNum);
-  }
-      
-  console.log(inputArray.sort());
-  //為什麼印出來是12?
-});
+    let yearNum = Number(todo[i].innerText.split("\n\n")[1].split("-")[0]);
+    let monthNum = Number(todo[i].innerText.split("\n\n")[1].split("-")[1]);
+    let dateNum = Number(todo[i].innerText.split("\n\n")[1].split("-")[2]);
+
+  
+    let myTodo = {
+      yearNum: yearNum,
+      monthNum: monthNum,
+      dateNum: dateNum,
+    };
+    console.log(myTodo);
+   inputArray.push(myTodo)
+ 
+  }})
+
